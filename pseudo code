@@ -1,0 +1,11 @@
+User enters a news outlet in search field and selects desired outlet.
+Upon clicking a news source from drop down, that news sources name shows up in top of list as "selected" and drop down list disappears.
+Page displays article title and type in below article sections.
+Upon hovering over article, section displays author, published date and description of article.
+Upon clicking an article section, the article drops down to display article's content.
+At bottom of article, displat the article's URL as an active link that, once clicked, sends user to the article on that outlet webpage in separate tab.
+Upon clicking the same article section, the article slides back up to initial position.
+Each subsequent article displays the most recently published info: title & type.
+Upon hovering over each subsequent article, relevant information is displayed: author, published date and description.
+After an article is clicked, the impression counter increases by 1.
+
