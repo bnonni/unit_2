@@ -1,6 +1,9 @@
-User enters a news outlet in search field and selects desired outlet.
-Upon clicking a news source from drop down, that news sources name shows up in top of list as "selected" and drop down list disappears.
-Page displays article title and type in below article sections.
+User hovers over search icon and search box pops out to the right.
+User enters a news outlet in search field and results being to populate based on characters.
+User selects desired outlet from search and search box minimizes and News Source populates in News Source field.
+If drop down is used, upon clicking a news source from drop down, that news sources name shows up in top of list as "selected" and drop down list disappears.
+Loading page pops up for 2 seconds then disappears.
+Page loads articles in a sliding fashion down th page with article titles and types in proper sections.
 Upon hovering over article, section displays author, published date and description of article.
 Upon clicking an article section, the article drops down to display article's content.
 At bottom of article, displat the article's URL as an active link that, once clicked, sends user to the article on that outlet webpage in separate tab.
