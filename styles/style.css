@@ -231,7 +231,7 @@ nav ul ul li {
   color: blue;
 }
 
-.articleContent #showContent{
+.articleContent .showContent{
   display: none;
 }
 

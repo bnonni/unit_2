@@ -1,17 +1,26 @@
 // $('#scroll').jscroll();
+
+//allows all read article buttons to work on click
 for(var i = 0; i < 5; i++) {
     $('#readArticleButton' + i).on('click', function () {
         $(this).next().slideToggle(400);
+        var impressions = '#impressionCounter'
+        ;
     });
 }
+//
+// $(document).ready(function() {
+//     $('#popUp .hidden').show();
+// });
+
 
 //API call upon clicking source 1
 $('#Source1').on('click', function(event) {
-    event.preventDefault(); //prevents the page from reloading and puts the sourec name in the top
+    event.preventDefault(); //prevents the page from reloading and puts the source name in the top
     $('#SourceName').html('Tech Crunch');
-    $('.featuredImage').html('<img src = images/techCrunch.jpg />');
+    $('.featuredImage').html('<img src = images/techCrunch.jpg />'); //sets the featured image to TechCrunch logo
+    $('.articleContent h6').html('Latest Tech News'); //sets the taxonomy of the articles
 
-    //sets the
     var techCrunch = 'https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=fb28fc61b34b465c8312a74a703d953b';
     $.ajax({
         url: techCrunch,
@@ -20,6 +29,8 @@ $('#Source1').on('click', function(event) {
            data.articles.forEach(function(article1,index){
                 console.log(data);
                 var article = article1.title;
+                var describe = article1.description;
+                var image = article1.urlToImage
                 var idTitle;
                 switch(index){
                     case 1:
@@ -28,7 +39,6 @@ $('#Source1').on('click', function(event) {
                     case 2:
                         idTitle = "Two";
                         break;
-
                     case 3:
                         idTitle = "Three";
                         break;
@@ -37,6 +47,8 @@ $('#Source1').on('click', function(event) {
                         break;
                 }
                 $('#title'+idTitle).html(article);
+               $('#showContent'+idTitle).html(describe);
+               $('imgOne').attr('src', image);
                // $('.article .featuredImage').html(image);
             });
         }
@@ -47,18 +59,17 @@ $('#Source1').on('click', function(event) {
 $('#Source2').on('click', function(){
     event.preventDefault();
     $('#SourceName').html('ESPN');
-    $('.featuredImage').html('<img src = images/espn_logo.jpg />');
-
+    $('.featuredImage').html('<img src = images/espn.jpg />');
+    $('.articleContent h6').html('Sports News');
     var espn =  'https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=fb28fc61b34b465c8312a74a703d953b';
-
     $.ajax({
         url: espn,
         type: 'GET',
         success: function(data) {
             data.articles.forEach(function(article1,index){
                 console.log(data);
-                var article = article1.title;
-                //var describe = article1.description;
+                var articleTitle = article1.title;
+                var describe = article1.description;
                 var idTitle;
                 switch(index){
                     case 1:
@@ -67,7 +78,6 @@ $('#Source2').on('click', function(){
                     case 2:
                         idTitle = "Two";
                         break;
-
                     case 3:
                         idTitle = "Three";
                         break;
@@ -75,8 +85,12 @@ $('#Source2').on('click', function(){
                         idTitle = "Four";
                         break;
                 }
-                $('#title'+idTitle).html(article);
-                $('.articleContent h6').html(describe);
+                $('#title'+idTitle).html(articleTitle);
+                $('#showContent'+idTitle).html(describe);
+                // if(articleURL || articleTitle === 'mlb' || 'MLB'){
+                //     $('.articleContent h6').html('Baseball');
+                // }else if (articleURL || articleTitle === 'mma' || 'MMA' || 'boxing'){
+                //     $('.articleContent h6').html('Boxing');}
             });
         }
     });
@@ -84,11 +98,11 @@ $('#Source2').on('click', function(){
 
 
 //API call upon clicking source 3
-$('#Source3').on('click', function() {
-    event.preventDefault();
-    $('#SourceName').html('Time');
-    $('.featuredImage').html('<img src = images/time.jpg />');
-
+$('#Source3').on('click', function() { //on click event
+    event.preventDefault(); //prevents refresh of page and clearing news source
+    $('#SourceName').html('Time'); //adds news source Time to News Source window at top
+    $('.featuredImage').html('<img src = images/time.png />'); //feeds in time's logo
+    $('.articleContent h6').html('Latest News');
     var time = 'https://newsapi.org/v1/articles?source=time&sortBy=top&apiKey=fb28fc61b34b465c8312a74a703d953b';
     $.ajax({
         url: time,
@@ -97,7 +111,7 @@ $('#Source3').on('click', function() {
             data.articles.forEach(function(article1,index){
                 console.log(data);
                 var article = article1.title;
-                //var image = article1.urlToImage;
+                var describe = article1.description;
                 var idTitle;
                 switch(index){
                     case 1:
@@ -106,7 +120,6 @@ $('#Source3').on('click', function() {
                     case 2:
                         idTitle = "Two";
                         break;
-
                     case 3:
                         idTitle = "Three";
                         break;
@@ -115,6 +128,7 @@ $('#Source3').on('click', function() {
                         break;
                 }
                 $('#title'+idTitle).html(article);
+                $('#showContent'+idTitle).html(describe);
             });
         }
     });
@@ -122,25 +136,3 @@ $('#Source3').on('click', function() {
 
 
 
-//
-// function getNewsSource1() {
-//     var url = "https://newsapi.org/v1/articles?source=";
-//     var source = "techcrunch";
-//     var apiKey = "fb28fc61b34b465c8312a74a703d953b";
-//     url += source + "&apiKey=" + apiKey;
-//     console.log(url);
-//     $.ajax({
-//         url: url,
-//         method: 'GET',
-//         success: function (response) {
-//             for (var i = 0; i < 5; i++) {
-//                 var headline = response.articles[i].title;
-//                 $('#headline' + i).html(headline);
-//             }
-//         }
-//     });
-// }
-// $('#Source1').on('click',function(e){
-//     e.preventDefault();
-//     getNewsSource1();
-// });
