@@ -9,7 +9,7 @@ for(var i = 0; i < 5; i++) {
 $('#Source1').on('click', function(event) {
     event.preventDefault(); //prevents the page from reloading and puts the sourec name in the top
     $('#SourceName').html('Tech Crunch');
-    $('')
+    $('.featuredImage').html('<img src = images/techCrunch.jpg />');
 
     //sets the
     var techCrunch = 'https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=fb28fc61b34b465c8312a74a703d953b';
@@ -47,6 +47,7 @@ $('#Source1').on('click', function(event) {
 $('#Source2').on('click', function(){
     event.preventDefault();
     $('#SourceName').html('ESPN');
+    $('.featuredImage').html('<img src = images/espn_logo.jpg />');
 
     var espn =  'https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=fb28fc61b34b465c8312a74a703d953b';
 
@@ -57,7 +58,7 @@ $('#Source2').on('click', function(){
             data.articles.forEach(function(article1,index){
                 console.log(data);
                 var article = article1.title;
-                var describe = article1.description;
+                //var describe = article1.description;
                 var idTitle;
                 switch(index){
                     case 1:
@@ -86,6 +87,7 @@ $('#Source2').on('click', function(){
 $('#Source3').on('click', function() {
     event.preventDefault();
     $('#SourceName').html('Time');
+    $('.featuredImage').html('<img src = images/time.jpg />');
 
     var time = 'https://newsapi.org/v1/articles?source=time&sortBy=top&apiKey=fb28fc61b34b465c8312a74a703d953b';
     $.ajax({
