@@ -27,6 +27,7 @@
                       <li><a href="index.html" id='Source1'>Tech Crunch</a></li>
                       <li><a href="index.html" id='Source2'>ESPN</a></li>
                       <li><a href="index.html" id='Source3'>Time</a></li>
+                      <li><a href="index.html" id='Source4'>Reddit</a></li>
                   </ul>
                 </li>
               </ul>
@@ -50,77 +51,91 @@
             <a href="#" class="popUpAction" target="_blank">Read more from source</a>
           </div>
         </div>
+    <!--Pop up loader end-->
 
-        <section id="main" class="container">
+    <!--Main container-->
+    <section id="main" class="container">
+
+    <!--article one-->
           <article class="article">
             <section class="featuredImage">
               <img id='imgOne' src="images/article_placeholder_1.jpg" alt="" />
             </section>
-
-              <!--Article section-->
+              <!--Article content-->
             <section class="articleContent">
                 <a href="#"><h3 id='titleOne'>Article Title</h3></a>
-                <h6>Lifestyle</h6>
+                <h6 id='taxOne'>Lifestyle</h6>
                 <a a href="#" id='readArticleButton1'>Read More</a>
                 <p class='showContent' id='showContentOne'>Content</p>
             </section>
-
+              <!--End article content-->
              <!--Impressions section-->
-            <section class="impressions" id="impressionCounter">
+            <section class="impressions" id="impressionsCounter1">
               0
             </section>
-
-
+              <!--End impressions section-->
             <div class="clearfix"></div>
-
-
           </article>
+    <!--end article one-->
+
+    <!--article two-->
           <article class="article">
             <section class="featuredImage">
               <img id='imgTwo' src="images/article_placeholder_2.jpg" alt="" />
             </section>
             <section id='title' class="articleContent">
                 <a href="#"><h3 id='titleTwo'>Article Title</h3></a>
-                <h6>Lifestyle</h6>
-                <a a href="#" id='readArticleButton2'>Read More</a>
+                <h6 id='taxTwo'>Lifestyle</h6>
+                <a a href="#" class="readCount" id='readArticleButton2'>Read More</a>
                 <p class='showContent' id='showContentTwo'>Content</p>
             </section>
-            <section class="impressions">
+            <section id='impressionsCounter2' class="impressions">
                 0
             </section>
             <div class="clearfix"></div>
           </article>
+    <!--end article two-->
+
+    <!--article three-->
         <article class="article">
             <section class="featuredImage">
                 <img id='imgThree' src="images/article_placeholder_2.jpg" alt="" />
             </section>
             <section class="articleContent">
                 <a href="#"><h3 id='titleThree'>Article Title</h3></a>
-                <h6>Lifestyle</h6>
-                <a a href="#" id='readArticleButton3'>Read More</a>
+                <h6 id='taxThree'>Lifestyle</h6>
+                <a a href="#" class="readCount" id='readArticleButton3'>Read More</a>
                 <p class='showContent' id='showContentThree'>Content</p>
             </section>
-            <section class="impressions">
+            <section id='impressionsCounter3' class="impressions">
                 0
             </section>
             <div class="clearfix"></div>
         </article>
+    <!--end article three-->
+
+    <!--article four-->
           <article class="article">
             <section class="featuredImage">
               <img id='imgFour' src="images/article_placeholder_1.jpg" alt="" />
             </section>
             <section class="articleContent">
                 <a href="#"><h3 id='titleFour'>Article Title</h3></a>
-                <h6>Lifestyle</h6>
-                <a a href="#" id='readArticleButton4'>Read More</a>
-                <p class='showContent' id='showContentFour'>Content</p>
+                <h6 id='taxFour'>Lifestyle</h6>
+                <a a href="#" id='readArticleButton4'><span id="readCount4">Read More</span></a>
+                <p class='showContent' id='showContentFour'>Content
+                    <h5 class='showContent'>Author</h5>
+                </p>
             </section>
-            <section class="impressions">
+            <section id='impressionsCounter4' class="impressions">
               0
             </section>
             <div class="clearfix"></div>
           </article>
-        </section>
+    <!--end article four-->
+
+
+    </section>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="js/jscroll-master/jquery.jscroll.min.js"></script>
