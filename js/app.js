@@ -1,12 +1,12 @@
 //allows all read article buttons to work on click
 $(document).ready(function() {
+
 for(var i = 0; i < 5; i++) {
     var readArticle = $('#readArticleButton' + i);
         readArticle.on('click', function () {
         $(this).next().slideToggle(400);
     });
 }
-
 // $('.scroll').jscroll({
 //     autoTriggerUntil: 3
 // });
@@ -53,14 +53,17 @@ $('#Source1').on('click', function(event) {
                         idTitle = "Four";
                         break;
                 }
-                $('#title'+idTitle).html(article);
                $('#showContent'+idTitle).html(describe);
                $('#img'+idTitle).attr('src', image);
                $('#tax'+idTitle).html(tax);
-            });
-        }
-    });
-});
+
+               var $articleNumber = $('#title'+idTitle);
+               $articleNumber.html(article);
+               $('#my_popup .container h1').text(article);
+            });//end forEach
+        }//end success function
+    });//end ajax call
+});//end on Source click
 
 //API call upon clicking source 2
 $('#Source2').on('click', function(){
@@ -73,14 +76,14 @@ $('#Source2').on('click', function(){
         url: espn,
         type: 'GET',
         success: function(data) {
-            data.articles.forEach(function(article1,index){
+            data.articles.forEach(function (article1, index) {
                 console.log(data);
-                var articleTitle = article1.title;
+                var article = article1.title;
                 var describe = article1.description;
                 var image = article1.urlToImage;
                 var tax = data.sortBy;
                 var idTitle;
-                switch(index){
+                switch (index) {
                     case 1:
                         idTitle = "One";
                         break;
@@ -94,10 +97,13 @@ $('#Source2').on('click', function(){
                         idTitle = "Four";
                         break;
                 }
-                $('#title'+idTitle).html(articleTitle);
-                $('#showContent'+idTitle).html(describe);
-                $('#img'+idTitle).attr('src', image);
-                $('#tax'+idTitle).html(tax);
+                $('#showContent' + idTitle).html(describe); //adds article titles to headline from API call
+                $('#img' + idTitle).attr('src', image); //adds article image URL to src attribute
+                $('#tax' + idTitle).html(tax); //adds the "sortBy' filter to the taxonomy section of the article
+
+                var $articleNumber = $('#title' + idTitle); //defines the wiring up of the article titles as a variable for reusability below
+                $articleNumber.html(article);//calls articleTitle variable above and adds it to the article titles variable
+                $('#my_popup .container h1').html(article);
             });
         }
     });
@@ -139,6 +145,8 @@ $('#Source3').on('click', function() { //on click event
                 $('#showContent'+idTitle).html(describe);
                 $('#img'+idTitle).attr('src', image);
                 $('#tax'+idTitle).html(tax);
+
+                $('#my_popup .container h1').html(article);
             });
         }
     });
