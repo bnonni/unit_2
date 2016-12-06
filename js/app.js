@@ -1,12 +1,12 @@
 //allows all read article buttons to work on click
 $(document).ready(function() {
 
-for(var i = 0; i < 5; i++) {
-    var readArticle = $('#readArticleButton' + i);
-        readArticle.on('click', function () {
-        $(this).next().slideToggle(400);
-    });
-}
+// for(var i = 0; i < 5; i++) {
+//     var readArticle = $('#readArticleButton' + i);
+//         readArticle.on('click', function () {
+//         $(this).next().slideToggle(400);
+//     });
+// }
 // $('.scroll').jscroll({
 //     autoTriggerUntil: 3
 // });
@@ -18,6 +18,7 @@ for(var i = 0; i < 5; i++) {
 //         // var impressions = $('#impressionsCounter');
 //         $('#impressionsCounter1').html(++count);
 //     })
+
 
 
 //API call upon clicking source 1
@@ -32,51 +33,57 @@ $('#Source1').on('click', function(event) {
         url: techCrunch,
         type: 'GET',
         success: function(data) {
-           data.articles.forEach(function(article1,index){
-                console.log(data);
-                var article = article1.title;
-                var describe = article1.description;
-                var image = article1.urlToImage;
-                var tax = data.sortBy;
-                var idTitle;
-                switch(index){
-                    case 1:
-                        idTitle = "One";
-                        break;
-                    case 2:
-                        idTitle = "Two";
-                        break;
-                    case 3:
-                        idTitle = "Three";
-                        break;
-                    case 4:
-                        idTitle = "Four";
-                        break;
-                }
-               $('#showContent'+idTitle).html(describe);
-               $('#img'+idTitle).attr('src', image);
-               $('#tax'+idTitle).html(tax);
+            try{
+                data.articles.forEach(function(article1,index){
+                    console.log(data);
+                    var article = article1.title;
+                    var describe = article1.description;
+                    var image = article1.urlToImage;
+                    var tax = data.sortBy;
+                    var url = article1.url;
+                    var idTitle;
+                    switch(index){
+                        case 1:
+                            idTitle = "One";
+                            break;
+                        case 2:
+                            idTitle = "Two";
+                            break;
+                        case 3:
+                            idTitle = "Three";
+                            break;
+                        case 4:
+                            idTitle = "Four";
+                            break;
+                    }
+                    $('#showContent'+idTitle).html(describe);
+                    $('#img'+idTitle).attr('src', image);
+                    $('#tax'+idTitle).html(tax);
 
-               var $articleNumber = $('#title'+idTitle);
-               $articleNumber.html(article);
-               $('#my_popup .container h1').text(article);
-            });//end forEach
+                    var $articleNumber = $('#title'+idTitle);
+                    $articleNumber.html(article);
+                    $('#my_popup .container h1').text(article + idTitle);
+
+                });
+            }catch(event){
+                alert('Your news source is having trouble loading. Please refresh and try again.')
+            }//end forEach
         }//end success function
     });//end ajax call
 });//end on Source click
 
 //API call upon clicking source 2
-$('#Source2').on('click', function(){
+$('#Source2').on('click', function(event){
     event.preventDefault();
     $('#SourceName').html('ESPN');
-    // $('.featuredImage').html('<img src = images/espn.jpg />');
-    // $('.articleContent h6').html('Sports News');
+
     var espn =  'https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=fb28fc61b34b465c8312a74a703d953b';
     $.ajax({
         url: espn,
         type: 'GET',
         success: function(data) {
-            data.articles.forEach(function (article1, index) {
+            try{
+                data.articles.forEach(function (article1, index) {
                 console.log(data);
                 var article = article1.title;
                 var describe = article1.description;
@@ -105,12 +112,15 @@ $('#Source2').on('click', function(){
                 $articleNumber.html(article);//calls articleTitle variable above and adds it to the article titles variable
                 $('#my_popup .container h1').html(article);
             });
-        }
-    });
-});
+        }catch(event){
+            alert('Your news source is having trouble loading. Please refresh and try again.')
+            }//end forEach
+        }//end success function
+    });//end ajax call
+});//end on Source click
 
 //API call upon clicking source 3
-$('#Source3').on('click', function() { //on click event
+$('#Source3').on('click', function(event) { //on click event
     event.preventDefault(); //prevents refresh of page and clearing news source
     $('#SourceName').html('Time'); //adds news source Time to News Source window at top
     // $('.featuredImage').html('<img src = images/time.png />'); //feeds in time's logo
@@ -120,37 +130,42 @@ $('#Source3').on('click', function() { //on click event
         url: time,
         type: 'GET',
         success: function (data) {
-            data.articles.forEach(function(article1,index){
-                console.log(data);
-                var article = article1.title;
-                var describe = article1.description;
-                var image = article1.urlToImage;
-                var tax = data.sortBy;
-                var idTitle;
-                switch(index){
-                    case 1:
-                        idTitle = "One";
-                        break;
-                    case 2:
-                        idTitle = "Two";
-                        break;
-                    case 3:
-                        idTitle = "Three";
-                        break;
-                    case 4:
-                        idTitle = "Four";
-                        break;
-                }
-                $('#title'+idTitle).html(article);
-                $('#showContent'+idTitle).html(describe);
-                $('#img'+idTitle).attr('src', image);
-                $('#tax'+idTitle).html(tax);
+            try{
+                data.articles.forEach(function(article1,index){
+                    console.log(data);
+                    var article = article1.title;
+                    var describe = article1.description;
+                    var image = article1.urlToImage;
+                    var tax = data.sortBy;
+                    var idTitle;
+                    switch(index){
+                        case 1:
+                            idTitle = "One";
+                            break;
+                        case 2:
+                            idTitle = "Two";
+                            break;
+                        case 3:
+                            idTitle = "Three";
+                            break;
+                        case 4:
+                            idTitle = "Four";
+                            break;
+                    }
+                    $('#title'+idTitle).html(article);
+                    $('#showContent'+idTitle).html(describe);
+                    $('#img'+idTitle).attr('src', image);
+                    $('#tax'+idTitle).html(tax);
 
-                $('#my_popup .container h1').html(article);
-            });
-        }
-    });
-});
+                    $('#my_popup .container h1').html(article);
+
+                });
+            }catch(event){
+                alert('Your news source is having trouble loading. Please refresh and try again.')
+            }//end forEach
+        }//end success function
+    });//end ajax call
+});//end on Source click
 
 //API call upon clicking source 4
     $('#Source4').on('click', function() { //on click event
