@@ -80,12 +80,8 @@ _Feed rules:_
   information in the pop-up.
 - Change the link of the "Read more from source" button to that of the
   respective article.
-- When the user selects a source from the dropdown menu on the header, replace
-  the content of the page with articles from the newly selected source. Display
-  the loading pop up when the user first selects the new source, and hide it on
+- Display the loading pop up when the user first selects the new source, and hide it on
   success.
-- Add an error message (either alert or a notification on the page) if the app
-  cannot load from the selected feed.
 
 __Additional UI interaction rules:__
 
